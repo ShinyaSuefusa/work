@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>Endpointsのテスト</title>
+<script type="text/javascript">
+function init() {
+ var ROOT = 'http://localhost:8888/_ah/api';
+ // APIを使うための初期化処理
+ gapi.client.load('slim3Service', 'v1', function() {
+  // 一覧取得APIの実行
+  console.log(JSON.stringify(gapi.client.slim3Service.queryAll));
+  gapi.client.slim3Service.queryAll().execute(function(resp) {
+   console.log(JSON.stringify(resp));
+  });
+ }, ROOT);
+}
+</script>
+<script src="https://apis.google.com/js/client.js?onload=init"></script>
+</head>
+ 
+<body>
+ <div>
+  <h1>Endpointsのテスト</h1>
+ </div>
+</body>
+</html>

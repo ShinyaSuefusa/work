@@ -1,0 +1,136 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://ageless-earth-667.appspot.com/_ah/api",
+  "name" : "slim3Service",
+  "version" : "v1",
+  "description" : "sample service.",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://ageless-earth-667.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "methods" : {
+    "slim3Service.queryAll" : {
+      "path" : "queryAll",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.suebosoft.work.helloworld2.service.Slim3V1Service.queryAll",
+      "request" : {
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "slim3Service.newAndPut" : {
+      "path" : "newAndPut/{prop1}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.suebosoft.work.helloworld2.service.Slim3V1Service.newAndPut",
+      "request" : {
+        "parameters" : {
+          "prop1" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "CollectionResponse_Slim3Model" : {
+        "id" : "CollectionResponse_Slim3Model",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Slim3Model"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Slim3Model" : {
+        "id" : "Slim3Model",
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "$ref" : "Key"
+          },
+          "prop1" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Key" : {
+        "id" : "Key",
+        "type" : "object",
+        "properties" : {
+          "kind" : {
+            "type" : "string"
+          },
+          "appId" : {
+            "type" : "string"
+          },
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "parent" : {
+            "$ref" : "Key"
+          },
+          "namespace" : {
+            "type" : "string"
+          },
+          "complete" : {
+            "type" : "boolean"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.suebosoft.work.helloworld2.service.Slim3V1Service.queryAll" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Slim3Model"
+        }
+      },
+      "com.suebosoft.work.helloworld2.service.Slim3V1Service.newAndPut" : {
+        "response" : {
+          "$ref" : "Slim3Model"
+        }
+      }
+    }
+  }
+}
