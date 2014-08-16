@@ -27,11 +27,11 @@ public class Slim3V1Service {
 	private static final Logger log = Logger.getLogger(Slim3V1Service.class.getName());
 	
 	@ApiMethod(
-		name = "newAndPut",
+		name = "append",
 		httpMethod = HttpMethod.GET,
 		authLevel = AuthLevel.NONE
 		)
-	public Slim3Model newAndPut(@Named("prop1") String prop1) {
+	public Slim3Model append(@Named("prop1") String prop1) {
 		log.info("prop1=" + prop1);
 		
 		Transaction tx = Datastore.beginTransaction();
@@ -53,6 +53,7 @@ public class Slim3V1Service {
 		authLevel = AuthLevel.NONE
 		)
 	public CollectionResponse<Slim3Model> queryAll() {
+		log.info("queryAll.");
 		List<Slim3Model> list = Datastore.query(Slim3ModelMeta.get()).asList();
 		Builder<Slim3Model> builder = CollectionResponse.<Slim3Model> builder();
 		builder.setItems(list);

@@ -2,9 +2,9 @@
   "extends" : "thirdParty.api",
   "abstract" : false,
   "root" : "https://ageless-earth-667.appspot.com/_ah/api",
-  "name" : "slim3Service",
+  "name" : "facebookService",
   "version" : "v1",
-  "description" : "sample service.",
+  "description" : "facebook service.",
   "defaultVersion" : false,
   "adapter" : {
     "bns" : "https://ageless-earth-667.appspot.com/_ah/spi",
@@ -25,32 +25,17 @@
     "maxAge" : 0
   },
   "methods" : {
-    "slim3Service.queryAll" : {
-      "path" : "queryAll",
+    "facebookService.login" : {
+      "path" : "login/{code}",
       "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
       "audiences" : [ ],
       "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.suebosoft.work.helloworld2.service.Slim3V1Service.queryAll",
-      "request" : {
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "slim3Service.append" : {
-      "path" : "append/{prop1}",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.suebosoft.work.helloworld2.service.Slim3V1Service.append",
+      "rosyMethod" : "com.suebosoft.work.helloworld2.service.FacebookV1Service.login",
       "request" : {
         "parameters" : {
-          "prop1" : {
+          "code" : {
             "type" : "string",
             "required" : true
           }
@@ -64,29 +49,20 @@
   },
   "descriptor" : {
     "schemas" : {
-      "CollectionResponse_Slim3Model" : {
-        "id" : "CollectionResponse_Slim3Model",
-        "type" : "object",
-        "properties" : {
-          "items" : {
-            "type" : "array",
-            "items" : {
-              "$ref" : "Slim3Model"
-            }
-          },
-          "nextPageToken" : {
-            "type" : "string"
-          }
-        }
-      },
-      "Slim3Model" : {
-        "id" : "Slim3Model",
+      "FBUserModel" : {
+        "id" : "FBUserModel",
         "type" : "object",
         "properties" : {
           "key" : {
             "$ref" : "Key"
           },
-          "prop1" : {
+          "id" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "picture" : {
             "type" : "string"
           }
         }
@@ -121,14 +97,9 @@
       }
     },
     "methods" : {
-      "com.suebosoft.work.helloworld2.service.Slim3V1Service.queryAll" : {
+      "com.suebosoft.work.helloworld2.service.FacebookV1Service.login" : {
         "response" : {
-          "$ref" : "CollectionResponse_Slim3Model"
-        }
-      },
-      "com.suebosoft.work.helloworld2.service.Slim3V1Service.append" : {
-        "response" : {
-          "$ref" : "Slim3Model"
+          "$ref" : "FBUserModel"
         }
       }
     }

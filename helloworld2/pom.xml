@@ -55,6 +55,16 @@
       <version>${appengine.version}</version>
     </dependency>
     <dependency>
+      <groupId>com.google.http-client</groupId>
+      <artifactId>google-http-client</artifactId>
+      <version>1.18.0-rc</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.http-client</groupId>
+      <artifactId>google-http-client-jackson</artifactId>
+      <version>1.18.0-rc</version>
+    </dependency>
+    <dependency>
       <groupId>org.slim3</groupId>
       <artifactId>slim3</artifactId>
       <version>${slim3.version}</version>

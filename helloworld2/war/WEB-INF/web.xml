@@ -4,14 +4,6 @@
     <param-name>slim3.rootPackage</param-name>
     <param-value>com.suebosoft.work.helloworld2</param-value>
   </context-param>
-  <context-param>
-    <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
-    <param-value>application</param-value>
-  </context-param>
-  <context-param>
-    <param-name>javax.servlet.jsp.jstl.fmt.request.charset</param-name>
-    <param-value>UTF-8</param-value>
-  </context-param>
   
   <filter>
     <filter-name>HotReloadingFilter</filter-name>
@@ -21,30 +13,6 @@
     <filter-name>DatastoreFilter</filter-name>
     <filter-class>org.slim3.datastore.DatastoreFilter</filter-class>
   </filter>
-  <filter>
-    <filter-name>FrontController</filter-name>
-    <filter-class>org.slim3.controller.FrontController</filter-class>
-  </filter>
-  <!--
-  <filter-mapping>
-    <filter-name>HotReloadingFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-    <dispatcher>REQUEST</dispatcher>
-  </filter-mapping>
-  <filter-mapping>
-    <filter-name>DatastoreFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-    <dispatcher>REQUEST</dispatcher>
-  </filter-mapping>
-  <filter-mapping>
-    <filter-name>FrontController</filter-name>
-    <url-pattern>/*</url-pattern>
-    <dispatcher>REQUEST</dispatcher>
-    <dispatcher>FORWARD</dispatcher>
-    <dispatcher>INCLUDE</dispatcher>
-    <dispatcher>ERROR</dispatcher>
-  </filter-mapping>
-  -->
   
   <servlet>
     <servlet-name>GlobalTransactionServlet</servlet-name>
@@ -57,7 +25,7 @@
     <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
     <init-param>
       <param-name>services</param-name>
-      <param-value>com.suebosoft.work.helloworld2.service.Slim3V1Service</param-value>
+      <param-value>com.suebosoft.work.helloworld2.service.FacebookV1Service,com.suebosoft.work.helloworld2.service.Slim3V1Service</param-value>
     </init-param>
   </servlet>
 
@@ -70,13 +38,6 @@
     <url-pattern>/_ah/spi/*</url-pattern>
   </servlet-mapping>
 
-  <security-constraint>
-    <web-resource-collection>
-      <web-resource-name>All jsp</web-resource-name>
-      <url-pattern>*.jsp</url-pattern>
-    </web-resource-collection>
-    <auth-constraint/>
-  </security-constraint>
   <security-constraint>
     <web-resource-collection>
       <web-resource-name>admin</web-resource-name>

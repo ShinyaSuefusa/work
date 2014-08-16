@@ -18,7 +18,7 @@ public class Slim3ServiceTest extends AppEngineTestCase {
   public void slim3test1() {
     int beforeCount = tester.count(Slim3Model.class);
 
-    service.newAndPut("abc");
+    service.append("abc");
 
     assertThat(tester.count(Slim3Model.class), is(equalTo(beforeCount + 1)));
   }
